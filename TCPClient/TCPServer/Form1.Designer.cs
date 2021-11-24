@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace TCPClient
+namespace TCPServer
 {
     partial class Form1
     {
@@ -103,6 +103,7 @@ namespace TCPClient
             this.btnSend.TabIndex = 6;
             this.btnSend.Text = "Enviar";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // lstClientIP
             // 

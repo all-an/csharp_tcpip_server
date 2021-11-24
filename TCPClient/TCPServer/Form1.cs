@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TCPClient
+namespace TCPServer
 {
     public partial class Form1 : Form
     {
@@ -44,12 +44,27 @@ namespace TCPClient
 
         private void Events_ClientDisconnected(object sender, ClientDisconnectedEventArgs e)
         {
-            throw new NotImplementedException();
+            txtInfo.Text += $"{e.IpPort} disconnected.{Environment.NewLine}";
+            lstClientIP.Items.Remove(e.IpPort);
         }
 
         private void Events_ClientConnected(object sender, ClientConnectedEventArgs e)
         {
-            throw new NotImplementedException();
+            txtInfo.Text += $"{e.IpPort} connected.{Environment.NewLine}";
+            lstClientIP.Items.Add(e.IpPort);
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            if (server.IsListening)
+            {
+                if (!String.IsNullOrEmpty(txtMessage.Text) && lstClientIP.SelectedItem != null)  //checando mensagem e selecionando Ip
+                {
+                    server.Send(lstClientIP.SelectedItem.ToString(), txtMessage.Text);
+                    txtInfo.Text += $"Server: {txtMessage.Text}{Environment.NewLine}";
+                    txtMessage.Text = string.Empty;
+                }
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace TCPClient
 {
     partial class Form1
@@ -64,6 +66,7 @@ namespace TCPClient
             this.btnConnect.TabIndex = 2;
             this.btnConnect.Text = "Conectar";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // txtInfo
             // 
@@ -99,6 +102,7 @@ namespace TCPClient
             this.btnSend.TabIndex = 6;
             this.btnSend.Text = "Enviar";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // Form1
             // 
@@ -116,9 +120,20 @@ namespace TCPClient
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TCP/IP Client";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
